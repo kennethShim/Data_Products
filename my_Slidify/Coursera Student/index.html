@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A Demonstration of the Central Limit Theorem with R-Shiny App</title>
+  <meta charset="utf-8">
+  <meta name="description" content="A Demonstration of the Central Limit Theorem with R-Shiny App">
+  <meta name="author" content="A Coursera Student">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>A Demonstration of the Central Limit Theorem with R-Shiny App</h1>
+    <h2>-A User Guide-</h2>
+    <p>A Coursera Student<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>BACKGROUND</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br><br></p>
+
+<p style="font-size:120%">Informally speaking, <b><em>the central limit theorem</em></b> tells us that when we collect sample means from a particular population for
+a sufficient amount of times, the mean of its distribution 
+approaches the true population mean.</p>
+
+<p style="font-size:120%">This is what this app demonstrates for us!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Methods</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4 style="font-family:courier"><b>Generation of A Random Population Mean</b></h4>
+
+<p>With the start of the app, a random population mean is generated using a R&#39;s random number generator with mean value of 500 and standard deviation of 500.</p>
+
+<pre><code class="r">PopMean &lt;- round( rnorm(1, mean=500, sd=500), 2)
+PopMean
+</code></pre>
+
+<pre><code>## [1] -189.12
+</code></pre>
+
+<h4 style="font-family:courier"><b>Sampling</b></h4>
+
+<p>Sample points with a user-specified sample size <em>&#39;sampleSize&#39;</em> are generated based on the randomly generated population mean with a fixed standard deviation value of 500.  </p>
+
+<pre><code class="r">sampleSize = 10; round(rnorm(sampleSize, mean=PopMean, sd=500), 2)
+</code></pre>
+
+<pre><code>##  [1] -611.88   16.88   -7.19  -97.08  240.63  243.34 -658.05  102.71
+##  [9] -275.73  172.99
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Basic Guide on User Interface</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4 style="font-family:courier"><b>Sliders</b></h4>
+
+<p>Two sliders for user-specified sample size parameter settings.</p>
+
+<ul>
+  <li><b>Sample Size</b> - data points per one sample</li>
+  <li><b>Num. of Samples</b> - number of samples to collect</li>
+</ul>
+
+<p><em>hints</em>: greater the parameter values, faster it approaches the 
+population mean</p>
+
+<p><br></p>
+
+<h4 style="font-family:courier"><b>Buttons</b></h4>
+
+<ul>
+  <li><b>Add Samples</b>: collects new samples from 
+  the population and triggers a dynamic change in the
+  mean of the distribution of the means.  This change
+  is also reflected in the histogram where its mean is
+  displayed with a red verticle line.</li>
+  
+  <li><b>Show True Pop. Mean</b>: displays the 
+  the true population mean of the randomly generated
+  population.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>A Sample Result</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Here is a near-normal distribution formed as a result of a sufficient sampling. As shown here, the mean of the distribution of the sample means is near its true population mean</p>
+
+<p><center><img src='img/sampleResult.png' height="480" width="680"></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='BACKGROUND'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Methods'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Basic Guide on User Interface'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='A Sample Result'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
